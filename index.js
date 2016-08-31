@@ -57,6 +57,7 @@ function sendMessage(recipientId, message) {
 function ApekMessage(recipientId) {
        var spotifyUrl = 'https://open.spotify.com/artist/6jNwV0P142cXxXanOl9Ylo';
        var tourUrl = 'http://www.apekofficial.com/schedule';
+       var promoUrl = 'http://www.apekofficial.com/contact/';
        var buttonImage = 'http://static1.squarespace.com/static/54dbed24e4b07ca77377bc9b/t/56c9017c4c2f85180fb7597d/1456013711515/APEK+PRESS+SHOT.jpg?format=2500w';
             
             var message = {
@@ -76,7 +77,11 @@ function ApekMessage(recipientId) {
                                 "type": "web_url",
                                 "url": tourUrl,
                                 "title": 'Tour Dates',
-                            }]
+                            	}, {
+                            	"type": "web_url",
+                                "url": promoUrl,
+                                "title": 'Send Promo',
+                            	}]
                         }]
                     }
                 }
