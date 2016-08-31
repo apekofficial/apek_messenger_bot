@@ -26,7 +26,10 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-          sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+        	if (event.message.text === 'options') {
+        		ApekMessage(event.sender.id)
+        	}
+          sendMessage(event.sender.id, {text: "type options for more info"});
         } 
     }
     res.sendStatus(200);
@@ -52,17 +55,12 @@ function sendMessage(recipientId, message) {
     });
 };
 
-function ApekMessage(recipientId, text) {
-    
-    text = text || "";
-    var values = text.split(' ');
-    
-    if (values) {            
+function ApekMessage(recipientId) {
        var spotifyUrl = 'https://open.spotify.com/artist/6jNwV0P142cXxXanOl9Ylo';
        var tourUrl = 'http://www.apekofficial.com/schedule';
        var buttonImage = 'https://www.dropbox.com/s/mugk7cna0z3cllz/APEK%20PRESS%20SHOT.jpg?dl=0';
             
-            message = {
+            var message = {
                 "attachment": {
                     "type": "template",
                     "payload": {
@@ -86,10 +84,4 @@ function ApekMessage(recipientId, text) {
             };
     
             sendMessage(recipientId, message);
-            
-            return true;
-    }
-    
-    return false;
-    
 };
