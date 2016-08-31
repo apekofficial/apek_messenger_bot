@@ -26,7 +26,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-        	if (event.message.text === 'options') {
+        	if (event.message.text.toLowerCase() === 'options') {
         		ApekMessage(event.sender.id)
         	}
         } 
