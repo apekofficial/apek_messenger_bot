@@ -26,6 +26,7 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
+
             sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
         }
     }
@@ -48,6 +49,48 @@ function sendMessage(recipientId, message) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
         }
-        
+
     });
+};
+
+function ApekMessage(recipientId, text) {
+    
+    text = text || "";
+    var values = text.split(' ');
+    
+    if (values) {            
+       var spotifyUrl = 'https://open.spotify.com/artist/6jNwV0P142cXxXanOl9Ylo';
+       var tourUrl = 'http://www.apekofficial.com/schedule';
+       var buttonImage = 'https://www.dropbox.com/s/mugk7cna0z3cllz/APEK%20PRESS%20SHOT.jpg?dl=0';
+            
+            message = {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                            "title": "APEK",
+                            "subtitle": "Hey! this is APEK, thanks for the message. To follow me on Spotify or to see my tour dates and buy tickets, please click the Spotify button or the Tour Dates button. Thanks!",
+                            "image_url": buttonImage,
+                            "buttons": [{
+                                "type": "web_url",
+                                "url": spotifyUrl,
+                                "title": "Follow me on Spotify"
+                                }, {
+                                "type": "web_url",
+                                "url": tourUrl,
+                                "title": 'Tour Dates',
+                            }]
+                        }]
+                    }
+                }
+            };
+    
+            sendMessage(recipientId, message);
+            
+            return true;
+    }
+    
+    return false;
+    
 };
