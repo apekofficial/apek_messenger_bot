@@ -28,8 +28,9 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
         	if (event.message.text === 'options') {
         		ApekMessage(event.sender.id)
+        	} else {
+        		sendMessage(event.sender.id, {text: "type options for more info"});		
         	}
-          sendMessage(event.sender.id, {text: "type options for more info"});
         } 
     }
     res.sendStatus(200);
@@ -67,7 +68,7 @@ function ApekMessage(recipientId) {
                         "template_type": "generic",
                         "elements": [{
                             "title": "APEK",
-                            "subtitle": "Hey! this is APEK, thanks for the message. To follow me on Spotify or to see my tour dates and buy tickets, please click the Spotify button or the Tour Dates button. Thanks!",
+                            "subtitle": "Hey! This is APEK, thanks for the message. Click the buttons below for more info!",
                             "image_url": buttonImage,
                             "buttons": [{
                                 "type": "web_url",
