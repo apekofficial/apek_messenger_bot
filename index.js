@@ -26,10 +26,8 @@ app.post('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         if (event.message && event.message.text) {
-        	ApekMessage(event.sender,id, 'thing');  
-        } else {
           sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
-        }
+        } 
     }
     res.sendStatus(200);
 });
