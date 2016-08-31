@@ -28,8 +28,6 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
         	if (event.message.text === 'options') {
         		ApekMessage(event.sender.id)
-        	} else {
-        		sendMessage(event.sender.id, {text: "type options for more info"});		
         	}
         } 
     }
