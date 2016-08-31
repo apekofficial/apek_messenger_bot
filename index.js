@@ -59,7 +59,7 @@ function sendMessage(recipientId, message) {
 function ApekMessage(recipientId) {
        var spotifyUrl = 'https://open.spotify.com/artist/6jNwV0P142cXxXanOl9Ylo';
        var tourUrl = 'http://www.apekofficial.com/schedule';
-       var buttonImage = 'https://www.dropbox.com/s/mugk7cna0z3cllz/APEK%20PRESS%20SHOT.jpg?dl=0';
+       var buttonImage = 'http://static1.squarespace.com/static/54dbed24e4b07ca77377bc9b/t/56c9017c4c2f85180fb7597d/1456013711515/APEK+PRESS+SHOT.jpg?format=2500w';
             
             var message = {
                 "attachment": {
