@@ -29,9 +29,9 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
         	if (event.message.text.toLowerCase() === 'options') {
         		ApekMessage(sender)
-                continue;
-        	}
-            sendMessage(sender, 'Please type options for more info');
+        	} else {
+                sendMessage(sender, events);
+            }
         } 
     }
     res.sendStatus(200);
